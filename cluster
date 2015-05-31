@@ -27,7 +27,7 @@ MAGENTA=4
 BLUE=5
 CYAN=6
 
-TIMEOUT = 720
+TIMEOUT = 1200
 PURGE_INTERVAL = 1800
 
 _DEFAULT_SEMAPHORE_KEY = 691990
@@ -996,7 +996,7 @@ def upload_code(gb,status):
     code_path = "/tmp/__code_" + str(status.port) + "_.tgz"
     exclude_path = "exclude.dat"
     
-    cmd = "tar -chzf " + code_path + " ./ "
+    cmd = "tar -czf " + code_path + " ./ "
     if(os.path.isfile(exclude_path)):
         cmd += " -X " + exclude_path
     add_log_line(gb,"Archiving code using: " + cmd,GREEN)

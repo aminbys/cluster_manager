@@ -13,7 +13,7 @@ import random
 from dns import resolver, reversename
 
 PING_INTERVAL = 120
-PING_TIMEOUT = 720
+PING_TIMEOUT = 1200
 REQUEST_TIMEOUT = 30
 
 REGISTRATION_ATTEMPTS = 5
