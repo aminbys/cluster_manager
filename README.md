@@ -14,7 +14,7 @@
 #### INSTALL
 1) install 'cluster_manager' using Enhance (see github.com/mhulsman).
 
-#### Uploading environment to grid
+#### Uploading Enhance environment to grid
 If grid is going to be used, use `<enhance_dir>/upload` file to upload environment to grid (note: this should be done everytime you update enhance environment):
 
 ```bash
