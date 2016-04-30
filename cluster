@@ -30,7 +30,7 @@ CYAN=6
 TIMEOUT = 1200
 PURGE_INTERVAL = 1800
 
-_DEFAULT_SEMAPHORE_KEY = 691990
+_DEFAULT_SEMAPHORE_KEY = 21987
 _SEMAPHORE_VALUE = 100
 
 #current screen info
@@ -901,6 +901,7 @@ def start_grid(gb,status,n,selgrid="all"):
             Popen(args,stdout=open(tmp_jdl,'w')).wait()
             
             cmd = "glite-wms-job-submit -d " + os.environ["USER"] + " --nomsg " + tmp_jdl
+            add_log_line(gb, 'Executing cmd: ' + cmd, MAGENTA)
 
             args = shlex.split(cmd)
             out = Popen(args,stdout=subprocess.PIPE,stderr=subprocess.PIPE).communicate()
