@@ -1,4 +1,6 @@
-# A nice script written by Marc Hulsman to submit and monitor jobs in Life Science Grid.
+# Cluster Manager
+
+A nice script written by Marc Hulsman to submit and monitor jobs in Life Science Grid.
 
 #### PREREQUISITES
 1. Add LFC_HOME and LFC_HOST to your environment. e.g. Add to you .bashrc something like:
