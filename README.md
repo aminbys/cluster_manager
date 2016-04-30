@@ -14,10 +14,13 @@
 #### INSTALL
 1) install 'cluster_manager' using Enhance (see github.com/mhulsman).
 
-#### CHANGE environment
-after installation, or moving scripts into work directory, if grid is used:
-1) use <enhance_dir>/upload to upload environment
+#### Uploading environment to grid
+If grid is going to be used, use `<enhance_dir>/upload` file to upload environment to grid (note: this should be done everytime you update enhance environment):
 
+```bash
+./upload grid:/<choose_a_name>.dist (e.g. ipengine.dist)
+```
+	
 #### RUN just python
 
 1. Adapt load_env_worker.sh
