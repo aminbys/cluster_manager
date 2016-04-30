@@ -23,7 +23,11 @@ after installation, or moving scripts into work directory, if grid is used:
 1. Adapt load_env_worker.sh
 2. If you need extra files, put them in the work directory (<enhance_dir>/sys_enhance/work) and update environment (last paragraph)
 3. If you use ipengine_loadenv.jdl, change XXNJOBXX to the number of jobs you want to run
-4. `glite-wms-job-submit -d <delegation_id> -o <jobid_file>  ipengine_loadenv.jdl`
+4. To submit jobs use: 
+
+	```bash
+	glite-wms-job-submit -d <delegation_id> -o <jobid_file>  ipengine_loadenv.jdl
+	```
 
 #### RUN ipython parallel
 1. First, make sure ports are open on <hostname of ui> that were given during install.
