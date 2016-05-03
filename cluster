@@ -578,25 +578,14 @@ def start_controller(gb,status):
                           " --HubFactory.control=%d,%d" % (internal[0], int(status.iport) + 3) + \
                           " --HubFactory.hb=%d,%d" % (int(status.iport) + 1, int(status.iport) + 2) + \
                           " --port=" + str(status.iport) + \
-                          " --nodb --quiet --location=" + status.address + \
+                          " --quiet --nodb --location=" + status.address + \
                           " --hwm=" + str(status.hwm) + \
                           " --usethreads" + \
                           " --ip=*" + \
                           " --ProfileDir.location=" + cwd + "/profile/"
         
         if status.recover:
-            cmd = "ipcontroller --HubFactory.notifier_port=%d" % (internal[4], ) + \
-                    " --HubFactory.iopub=%d,%d" % (internal[3], int(status.iport) + 6) + \
-                    " --HubFactory.task=%d,%d" % (internal[2], int(status.iport) + 5) + \
-                    " --HubFactory.mux=%d,%d" % (internal[1], int(status.iport) + 4) + \
-                    " --HubFactory.control=%d,%d" % (internal[0], int(status.iport) + 3) + \
-                    " --HubFactory.hb=%d,%d" % (int(status.iport) + 1, int(status.iport) + 2) + \
-                    " --port=" + str(status.iport) + \
-                    " --reuse --restore --quiet --nodb --location=" + status.address + \
-                    " --hwm=" + str(status.hwm) + \
-                    " --usethreads" + \
-                    " --ip=*" + \
-                    " --ProfileDir.location=" + cwd + "/profile/"
+            cmd = cmd + " --reuse --restore"
         
         add_log_line(gb,"Executing: " + cmd, GREEN)
         args = shlex.split(cmd)
@@ -696,17 +685,20 @@ def restart_controller(gb, status):
     time.sleep(4) #finishes log output, lets threads terminate
 
     internal=range(int(status.iport)+10000,int(status.iport)+10004)
-    cmd = "ipcontroller --HubFactory.iopub=%d,%d" % (internal[3], int(status.iport) + 7) + \
-            " --HubFactory.task=%d,%d" % (internal[2], int(status.iport) + 6) + \
-            " --HubFactory.mux=%d,%d" % (internal[1], int(status.iport) + 5) + \
-            " --HubFactory.control=%d,%d" % (internal[0], int(status.iport) + 4) + \
-            " --HubFactory.hb=%d,%d" % (int(status.iport) + 2, int(status.iport) + 3) + \
-            " --port=" + str(status.iport) + \
-            " --reuse --restore --quiet --nodb --location=" + status.address + \
-            " --hwm=" + str(status.hwm) + \
-            " --usethreads" + \
-            " --ip=*" + \
-            " --ProfileDir.location=" + cwd + "/profile/"
+    cmd = "ipcontroller --HubFactory.notifier_port=%d" % (internal[4], ) + \
+          " --HubFactory.iopub=%d,%d" % (internal[3], int(status.iport) + 6) + \
+          " --HubFactory.task=%d,%d" % (internal[2], int(status.iport) + 5) + \
+          " --HubFactory.mux=%d,%d" % (internal[1], int(status.iport) + 4) + \
+          " --HubFactory.control=%d,%d" % (internal[0], int(status.iport) + 3) + \
+          " --HubFactory.hb=%d,%d" % (int(status.iport) + 1, int(status.iport) + 2) + \
+          " --port=" + str(status.iport) + \
+          " --quiet --nodb --location=" + status.address + \
+          " --hwm=" + str(status.hwm) + \
+          " --usethreads" + \
+          " --ip=*" + \
+          " --ProfileDir.location=" + cwd + "/profile/" + \
+          " --reuse --restore"
+          
     status.lock.acquire()
     try :
         shutil.move(client_json_path + '.bak', client_json_path)
