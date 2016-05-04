@@ -684,7 +684,7 @@ def restart_controller(gb, status):
     
     time.sleep(4) #finishes log output, lets threads terminate
 
-    internal=range(int(status.iport)+10000,int(status.iport)+10004)
+    internal=range(int(status.iport)+10000,int(status.iport)+10005)
     cmd = "ipcontroller --HubFactory.notifier_port=%d" % (internal[4], ) + \
           " --HubFactory.iopub=%d,%d" % (internal[3], int(status.iport) + 6) + \
           " --HubFactory.task=%d,%d" % (internal[2], int(status.iport) + 5) + \
